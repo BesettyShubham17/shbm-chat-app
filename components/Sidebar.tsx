@@ -25,7 +25,7 @@ export default function Sidebar() {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/users?search=${search}`, {
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || "https://your-backend.onrender.com"}/api/users?search=${search}`, {
         withCredentials: true,
       });
       setUsers(res.data);
@@ -36,7 +36,7 @@ export default function Sidebar() {
 
   const handleLogout = async () => {
     try {
-      await axios.post("http://localhost:5000/api/auth/logout", {}, { withCredentials: true });
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL || "https://your-backend.onrender.com"}/api/auth/logout`, {}, { withCredentials: true });
       logout();
       disconnectSocket();
     } catch (error) {

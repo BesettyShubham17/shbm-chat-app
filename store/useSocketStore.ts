@@ -23,7 +23,7 @@ export const useSocketStore = create<SocketState>((set, get) => ({
       existingSocket.disconnect();
     }
 
-    const socket = io("http://localhost:5000", {
+    const socket = io(process.env.NEXT_PUBLIC_API_URL || "https://your-backend.onrender.com", {
       withCredentials: true,
     });
 

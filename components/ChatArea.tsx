@@ -31,7 +31,7 @@ export default function ChatArea() {
   const fetchMessages = async () => {
     if (!activeChat) return;
     try {
-      const res = await axios.get(`http://localhost:5000/api/messages/${activeChat._id}`, {
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || "https://your-backend.onrender.com"}/api/messages/${activeChat._id}`, {
         withCredentials: true,
       });
       setMessages(res.data);
